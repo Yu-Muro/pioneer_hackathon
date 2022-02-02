@@ -31,8 +31,8 @@ def add_new_user(user_id, password, picture_id = 1, mileage = 0):
     new_user = User(
         user_id = user_id,
         password = password,
-        picture_id = nickname,
-        mileage = comment
+        picture_id = picture_id,
+        mileage = mileage
     )
     session.add(new_user)
     session.commit()
