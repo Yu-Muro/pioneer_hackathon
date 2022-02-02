@@ -1,6 +1,6 @@
 import flask
 
-SECRET_KEY = "hogefuga"
+SECRET_KEY = "hoge"
 
 app = flask.Flask(
     __name__,
