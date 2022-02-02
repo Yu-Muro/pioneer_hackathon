@@ -1,17 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link} from 'react-router-dom'
 import { useStopwatch } from "react-timer-hook";
+import axios from 'axios';
 
 // home pageです
 // 運転時間とか図るようです
 
-
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 const Home = () => {
 
 
   const { seconds, minutes, hours, days, isRunning, start, pause, reset } =
   useStopwatch({ autoStart: false });
+
+
+  const [start_longitude,setStart_longitude] = useState(); //スタート経度
+  const [start_latitude,setStart_latitude] = useState(); //スタート緯度
+
+  const [goal_longitude,setGoal_longitude] = useState(); //ゴール経度
+  const [goal_latitude,setGoal_latitude] = useState(); //ゴール緯度
+ 
+
+  const setStartPos = ()=>{
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        setStart_latitude(pos.coords.latitude);
+        setStart_longitude(pos.coords.longitude);
+      },
+    )
+  };
+
+  const setGoalPos = ()=>{
+      navigator.geolocation.getCurrentPosition(
+        pos => {
+          setStart_latitude(pos.coords.latitude);
+          setStart_longitude(pos.coords.longitude);
+        },
+      )
+  };
+
+  //https://developer.yahoo.co.jp/webapi/map/openlocalplatform/v1/distance.html
+  const getDistance = async()=>{
+    await axios.get(`https://map.yahooapis.jp/dist/V1/distance?coordinates=${start_longitude},${start_latitude} ${goal_longitude},${goal_latitude}&appid=ID!!&output=json`)
+    .then(res=>{
+      console.log("###",res)
+    })
+
+  }
 
   return (
     <>
@@ -24,7 +60,8 @@ const Home = () => {
         </div>
 
         <div style={{ fontSize: "100px" }}>
-          <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:
+
+          <span>{hours}</span>:<span>{minutes}</span>:
           <span>{seconds}</span>
         </div>
         <p>{isRunning ? "Running" : "Not running"}</p>
@@ -60,6 +97,22 @@ const Home = () => {
           )}
 
         </div>
+      </div>
+      <p>
+        start
+        {start_latitude},
+        {start_longitude}
+      </p>
+      <p>
+        goal
+        {goal_latitude},
+        {goal_longitude}
+      </p>
+
+      <div className='text-center'>
+        <button type='button'className='btn btn-primary' onClick={setStartPos}>start</button>
+        <button type='button'className='btn btn-primary' onClick={setGoalPos}>goal</button>
+        {/* <button type='button'className='btn btn-primary' onClick={getDistance}>d</button> */}
       </div>
 
     </>
