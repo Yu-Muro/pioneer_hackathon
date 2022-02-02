@@ -1,6 +1,6 @@
 import flask
 from flask import jsonify
-import db_manager
+# import db_manager
 
 
 SECRET_KEY = "hogefuga"
@@ -14,8 +14,7 @@ app.config["SECRET_KEY"] = SECRET_KEY
 
 @app.route("/", methods = ["POST", "GET"])
 def index():
-    flask.abort(404)
-    return None
+    return flask.render_template("index.html")
 
 
 @app.route("/register", methods = ["POST"])
