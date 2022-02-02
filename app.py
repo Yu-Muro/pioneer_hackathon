@@ -1,6 +1,7 @@
 import flask
 from flask import jsonify
 import db_manager
+import os
 
 
 SECRET_KEY = "hogefuga"
@@ -99,4 +100,5 @@ def login():
     #     return flask.render_template("login.html")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=808080, debug=True)
+    port = int(os.getenv("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
