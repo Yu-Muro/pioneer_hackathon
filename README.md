@@ -2,9 +2,9 @@
 
 ## ディレクトリ構成
 
-├ static
-    ├ css
-    ├ JS
-├ templates
-    ├ HTML
-app.py
+├ static <br>
+    ├ css <br>
+    ├ JS <br>
+├ templates <br>
+    ├ HTML <br>
+app.py <br>
