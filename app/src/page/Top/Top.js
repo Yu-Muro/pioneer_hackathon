@@ -11,10 +11,9 @@ const Top = () => {
       <div className='text-center'>
         <img className='w-50' src={`${process.env.PUBLIC_URL}/car-dot.png`} alt="car" />
         <p className='h3 my-3 '>動いて描く！</p>
-
-        <button type="submit" className="btn btn-primary" >描く</button>
+        <p className='h9 my-3 '>走った分だけ華やかに。</p>
+        <a type="button" className="btn btn-primary" href='/login'>描き始める</a>
       </div>
-      <Link to="/home">home</Link>
     </div>
   )
 };
