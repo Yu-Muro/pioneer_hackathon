@@ -6,6 +6,7 @@ import Top from './page/Top/Top';
 import Login from './page/Login/Login';
 import Header from './components/Header/Header';
 import Signup from './page/Signup/Signup';
+import Result from './page/Result/Result';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path='/home' element={<Home/>}/>     
             <Route path='/login' element={<Login/>}/>    
             <Route path='/signup' element={<Signup/>}/> 
+            <Route path='/result' element={<Result/>}/>
           </Routes>
         </BrowserRouter>
       </div>
