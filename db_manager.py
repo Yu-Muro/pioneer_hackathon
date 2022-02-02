@@ -66,5 +66,4 @@ def delete_user(user_id):
     session.close()
 
 if __name__ == "__main__":
-    add_default_user()
     print("session closed")
