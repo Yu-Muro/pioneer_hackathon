@@ -1,6 +1,6 @@
 import flask
 from flask import jsonify
-# import db_manager
+import db_manager
 
 
 SECRET_KEY = "hogefuga"
