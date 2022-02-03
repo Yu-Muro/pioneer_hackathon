@@ -1,13 +1,33 @@
+import axios from 'axios';
 import React,{useState} from 'react';
 import { Link } from 'react-router-dom';
+
+
+// const API_URL = process
+const API_URL = 'https://pixel-drive.herokuapp.com'
 
 const Login = () => {
   const [name,setName] = useState('');
   const [password,setPassword] = useState('');
+  
+  const loginUser = async(e)=>{
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("username", name);
+    formData.append("password", password);
 
-
-  const createUser = ()=>{
-    console.log("###",name,password)
+    // ,{withCredentials: true}
+    await axios.post(`${API_URL}/register`, formData,{withCredentials: true})
+    .then(function (response) {
+      // 送信成功時の処理
+      console.log(response);
+    })
+    .catch(function (error) {
+      // 送信失敗時の処理
+      console.log(error);
+    });
+    setName('')
+    setPassword('')
   }
 
 
@@ -27,7 +47,7 @@ const Login = () => {
           <label>Password</label>
           <input type="user_password" className="form-control" id="user_password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
         </div>
-        <button type="submit" className="btn btn-primary" onClick={createUser}>Login</button>
+        <button type="submit" className="btn btn-primary" onClick={loginUser}>Login</button>
       </form>
       <Link to="/signup">新規登録はこちらから</Link>
     </div>
