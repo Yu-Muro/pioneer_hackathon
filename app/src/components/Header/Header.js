@@ -3,7 +3,7 @@ import React from 'react';
 const Header = () => {
   return (
     <>
-      <nav className="navbar navbar-light bg-primary">
+      <nav className="navbar navbar-dark bg-primary">
         <a href="/" className="navbar-brand">Pixel Drive</a>
         <button className="navbar-toggler" type="button"
           data-toggle="collapse"
