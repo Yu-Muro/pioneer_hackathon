@@ -21,7 +21,7 @@ const Home = () => {
   const [goal_longitude,setGoal_longitude] = useState(); //ゴール経度
   const [goal_latitude,setGoal_latitude] = useState(); //ゴール緯度
  
-
+  
   const setStartPos = ()=>{
     navigator.geolocation.getCurrentPosition(
       pos => {

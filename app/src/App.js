@@ -7,6 +7,7 @@ import Login from './page/Login/Login';
 import Header from './components/Header/Header';
 import Signup from './page/Signup/Signup';
 import Result from './page/Result/Result';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div>
+      <Footer/>
     </>
 
   );
