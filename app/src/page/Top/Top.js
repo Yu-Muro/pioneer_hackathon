@@ -26,16 +26,16 @@ const Top = () => {
 
       </div>
 
-      <h1 className="text-center">こんなアプリ</h1>
+      <h3 className="text-center">こんなアプリ</h3>
       <div className="row">
-        <div className="col-4 text-center border border-5 border-warning rounded-lg">
-          走る
+        <div className="col-4 text-center border border-2 rounded-lg">
+          <h5 className="text-primary">走る</h5>
         </div>
-        <div className="col-4 text-center border border-5 border-warning rounded-lg">
-          描く
+        <div className="col-4 text-center border border-2 rounded-lg">
+          <h5>描く</h5>
         </div>
-        <div className="col-4 text-center border border-5 border-warning rounded-lg">
-          集める
+        <div className="col-4 text-center border border-2 rounded-lg">
+          <h5>集める</h5>
         </div>
       </div>
     </div>
