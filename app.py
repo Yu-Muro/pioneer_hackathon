@@ -111,7 +111,7 @@ def login():
     # else:
     #     return flask.render_template("login.html")
 
-@app.route("\rev", methods=["POST"])
+@app.route("/rev", methods=["POST"])
 def rev():
     username = flask.request.form.get('username')
     mileage = flask.request.form.get('mileage')
