@@ -33,16 +33,25 @@ const Top = () => {
       <p></p>
       <div className="row">
         <div className="col-4 text-center border border-2 rounded-lg">
-          <h5 className="text-primary">走る</h5>
+          <h5  className="text-primary ">走る</h5>
+          <p style={{ 'line-height': '1.3rem' }} >
           Pixel Driveが走った距離を計測します
+          </p>
+          
         </div>
         <div className="col-4 text-center border border-2 rounded-lg">
           <h5 className="text-primary">描く</h5>
+          
+          <p style={{ 'line-height': '1.3rem' }} >
           距離に応じて素敵なドット絵が描かれていきます
+          </p>
         </div>
         <div className="col-4 text-center border border-2 rounded-lg">
           <h5 className="text-primary">集める</h5>
+          
+          <p style={{ 'line-height': '1.3rem' }} >
           たくさんのドット絵をゲットしましょう
+          </p>
         </div>
       </div>
     </div>

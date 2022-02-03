@@ -47,11 +47,11 @@ const Login = () => {
         <div className="form-group">
           <label>Your Nick Name</label>
           <input type="text" className="form-control" id="user_name"  placeholder="Enter your name" onChange={(e)=>setName(e.target.value)}/>
-          <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+          {/* <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small> */}
         </div>
         <div className="form-group">
           <label>Password</label>
-          <input type="user_password" className="form-control" id="user_password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
+          <input type="password" className="form-control" id="user_password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
         </div>
         <button type="submit" className="btn btn-primary" onClick={loginUser}>Login</button>
       </form>

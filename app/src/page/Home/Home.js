@@ -24,6 +24,8 @@ const Home = () => {
 
   const username = localStorage.getItem("username");
   const password = localStorage.getItem("password");
+
+  const [base64img,setBase64img] = useState(''); //ゴール緯度
  
 
   const setStartPos = ()=>{
@@ -55,14 +57,16 @@ const Home = () => {
 
     const formData = new FormData();
     formData.append("username", username);
-    formData.append("password", password);
-    formData.append("password", dist);
+    // formData.append("password", password);
+    formData.append("mileage", dist);
 
 
-    await axios.post(`${API_URL}/hogehoge`, formData)
+    await axios.post(`${API_URL}/rev`, formData)
     .then(function (response) {
       // 送信成功時の処理
-      console.log(response);
+
+      setBase64img(response.data.img)
+      
     })
     .catch(function (error) {
       // 送信失敗時の処理
@@ -73,6 +77,7 @@ const Home = () => {
     setStart_latitude();
     setGoal_longitude();
     setGoal_latitude();
+    // document.location.href = '/result'
 
   }
   
@@ -96,12 +101,15 @@ const Home = () => {
   return (
     <div>
       {username ?
+
         <div className='my-3 text-center'>
           <h2>Welcome to </h2>
           <h2>Pixel Drive.</h2>
           <div className='mt-3'>
             <p>ストップウォッチ</p>
           </div>
+
+          
           
           <div style={{ fontSize: 50 }}>
           
@@ -143,18 +151,26 @@ const Home = () => {
           
           
           
-          <div>
+          {/* <div>
             {!isRunning && (
               <Link to="/result">現在のドット絵を見る</Link>
             )}
           
-          </div>
+          </div> */}
 
           
           
           <div className='text-center my-5'>
-          <button type='button' className='btn btn-primary' onClick={calcDistance}>運転記録を反映する！</button>
+          <button type='button' className='btn btn-primary' onClick={getDotPicture}>運転記録を反映する！</button>
           </div>
+          {
+            base64img ? 
+            <>
+              <img className='w-75 h-75' src={`data:image/jpeg;base64,${base64img}`}/>
+            </>
+
+            :<></>
+          }
      </div> : <>loginに失敗しました</>
     }
     </div>
