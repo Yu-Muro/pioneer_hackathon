@@ -1,3 +1,4 @@
+import os
 import cv2
 import random
 import base64
@@ -36,6 +37,7 @@ def make_img(picture_id, mileage):
     cv2.imwrite('resize_img.jpg', dst)
     with open('resize_img.jpg', "rb") as f:
         img_base64 = base64.b64encode(f.read()).decode('utf-8')
+    os.remove('resize_img.jpg')
     return img_base64
 
 # img_hsv = cv2.cvtColor(dst, cv2.COLOR_BGR2HSV)
