@@ -42,11 +42,15 @@ const Home = () => {
 
   //https://developer.yahoo.co.jp/webapi/map/openlocalplatform/v1/distance.html
   const getDistance = async () => {
-    await axios.get(`https://map.yahooapis.jp/dist/V1/distance?coordinates=${start_longitude},${start_latitude} ${goal_longitude},${goal_latitude}&appid=ID!!&output=json`)
+    await axios.get(`https://map.yahooapis.jp/dist/V1/distance?coordinates=${start_longitude},${start_latitude} ${goal_longitude},${goal_latitude}&appid=dj00aiZpPW5jTjJaTGN4bm53aiZzPWNvbnN1bWVyc2VjcmV0Jng9MGI-&output=json`)
       .then(res => {
         console.log("###", res)
       })
 
+  }
+
+  const calcDistance = () => {
+    console.log(6378137 * Math.acos(Math.sin(start_latitude) * Math.sin(goal_latitude) + Math.cos(start_latitude) * Math.cos(goal_latitude) * Math.cos(goal_longitude - start_longitude)))
   }
 
   return (
@@ -112,7 +116,7 @@ const Home = () => {
       <div className='text-center'>
         <button type='button' className='btn btn-primary' onClick={setStartPos}>start</button>
         <button type='button' className='btn btn-primary' onClick={setGoalPos}>goal</button>
-        {/* <button type='button'className='btn btn-primary' onClick={getDistance}>d</button> */}
+        <button type='button' className='btn btn-primary' onClick={calcDistance}>d</button>
       </div>
 
     </>
