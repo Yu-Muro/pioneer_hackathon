@@ -57,6 +57,30 @@ def regisiter():
             # with open('test.csv', 'a') as file:
             #     writer = csv.writer(file, lineterminator='n')
             #     writer.writerow(System_list)
+            if 20 < len(username):
+                return jsonify({
+                "message": "Account creation failed",
+                "cause": "More than 20 characters"
+                }), 400
+            for i in username:
+                if ord(i) < 33 or 126 < ord(i):
+                    return jsonify({
+                    "message": "Account creation failed",
+                    "cause": "Invalid characters"
+                    }), 200
+
+            if 20 < len(password):
+                return jsonify({
+                "message": "Account creation failed",
+                "cause": "More than 20 characters"
+                }), 400
+            for j in password:
+                if ord(j) < 33 or 126 < ord(j):
+                    return jsonify({
+                    "message": "Account creation failed",
+                    "cause": "Invalid characters"
+                    }), 200
+
             if db_manager.get_user(username) != []:
                 return jsonify({
                     "message": "Account creation failed",
@@ -92,6 +116,30 @@ def login():
                 "message": "Account creation failed",
                 "cause": "required password"
             }), 400
+
+        if 20 < len(username):
+            return jsonify({
+            "message": "Account login failed",
+            "cause": "More than 20 characters"
+            }), 400
+        for i in username:
+            if ord(i) < 33 or 126 < ord(i):
+                return jsonify({
+                "message": "Account login failed",
+                "cause": "Invalid characters"
+                }), 200
+
+        if 20 < len(password):
+            return jsonify({
+            "message": "Account login failed",
+            "cause": "More than 20 characters"
+            }), 400
+        for j in password:
+            if ord(j) < 33 or 126 < ord(j):
+                return jsonify({
+                "message": "Account login failed",
+                "cause": "Invalid characters"
+                }), 200
 
         if db_manager.is_exist(username, password):
             return jsonify({
