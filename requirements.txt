@@ -2,6 +2,5 @@ Flask==2.0.1
 psycopg2==2.9.1
 SQLAlchemy==1.4.25
 numpy==1.19.5
-opencv-python
-base64
-matplotlib
+opencv-python==4.3.0.38
+matplotlib==3.2.2
