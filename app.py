@@ -105,7 +105,7 @@ def login():
         if not username:
             # return flask.redirect('/login')
             return jsonify({
-                "message": "Account creation failed",
+                "message": "Account login failed",
                 "cause": "required user name"
             }), 400
 
@@ -113,7 +113,7 @@ def login():
         elif not password:
             # return flask.redirect('/login')
             return jsonify({
-                "message": "Account creation failed",
+                "message": "Account login failed",
                 "cause": "required password"
             }), 400
 
