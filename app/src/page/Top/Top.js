@@ -9,7 +9,6 @@ const Top = () => {
   return (
     <div className='my-4'>
       <div>
-
         <h1>Move and Draw.</h1>
         <p className='h9 '>走った分だけ華やかに。</p>
         <p className='h9 '>あなたのドライブをちょっとだけ楽しくさせます。</p>
@@ -27,15 +26,17 @@ const Top = () => {
 
       </div>
 
-      <div>
-        <p></p>
-      </div>
-
-      <p>機能</p>
-      <div className="d-flex justify-content-center bd-highlight mb-3">
-        <div className="p-2 bd-highlight">走る</div>
-        <div className="p-2 bd-highlight">描く</div>
-        <div className="p-2 bd-highlight">集める</div>
+      <h1 className="text-center">こんなアプリ</h1>
+      <div className="row">
+        <div className="col-4 text-center border border-5 border-warning rounded-lg">
+          走る
+        </div>
+        <div className="col-4 text-center border border-5 border-warning rounded-lg">
+          描く
+        </div>
+        <div className="col-4 text-center border border-5 border-warning rounded-lg">
+          集める
+        </div>
       </div>
     </div>
   )
