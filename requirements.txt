@@ -4,3 +4,4 @@ SQLAlchemy==1.4.25
 numpy
 opencv-python
 matplotlib
+opencv-contrib-python
