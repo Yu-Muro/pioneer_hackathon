@@ -15,16 +15,22 @@ const Login = () => {
     const formData = new FormData();
     formData.append("username", name);
     formData.append("password", password);
+    // formData.append("confirmation", password);
 
     // ,{withCredentials: true}
-    await axios.post(`${API_URL}/register`, formData,{withCredentials: true})
+    await axios.post(`${API_URL}/login`, formData,{withCredentials: false})
     .then(function (response) {
       // 送信成功時の処理
-      console.log(response);
+      localStorage.setItem('username', name);
+      localStorage.setItem('password',password);
+
+      //セキュリティがばがば
+      document.location.href = '/home'
     })
     .catch(function (error) {
       // 送信失敗時の処理
       console.log(error);
+      
     });
     setName('')
     setPassword('')

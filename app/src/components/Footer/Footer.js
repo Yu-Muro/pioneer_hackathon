@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div className='bg-primary ' style={{ height: 200 }}>
+    <div className='bg-primary' style={{ height: 200 }}>
       <p class="text-center text-light">Developers</p>
       <div style={{ 'line-height': '0.8rem' }} className="d-flex justify-content-center bd-highlight mb-3">
         <div className="p-2 bd-highlight">

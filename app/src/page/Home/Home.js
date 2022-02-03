@@ -21,6 +21,9 @@ const Home = () => {
 
   const [goal_longitude,setGoal_longitude] = useState(); //ゴール経度
   const [goal_latitude,setGoal_latitude] = useState(); //ゴール緯度
+
+  const username = localStorage.getItem("username");
+  const password = localStorage.getItem("password");
  
 
   const setStartPos = ()=>{
@@ -49,8 +52,6 @@ const Home = () => {
     setGoalPos();
 
     const dist = calcDistance()
-    const username = localStorage.getItem("username");
-    const password = localStorage.getItem("password");
 
     const formData = new FormData();
     formData.append("username", username);
@@ -93,71 +94,78 @@ const Home = () => {
 
 
   return (
-    <>
-
-      <div className='my-3 text-center'>
-        <h2>Welcome to </h2>
-        <h2>Pixel Drive.</h2>
-        <div className='mt-3'>
-          <p>ストップウォッチ</p>
-        </div>
-
-        <div style={{ fontSize: 50 }}>
-
-          {hours < 10 && (0)}<span>{hours}</span>:
-          {minutes < 10 && (0)}<span>{minutes}</span>:
-          {seconds < 10 && (0)}<span>{seconds}</span>
-        </div>
-        <p>{isRunning ? "Running" : "Not running"}</p>
-        <button className='mx-1 btn btn-secondary' onClick={startDrive}>Start</button>
-        <button className='mx-1 btn btn-secondary' onClick={pause}>Pause</button>
-        <button className='mx-1 btn btn-secondary' onClick={reset}>Reset</button>
-
-        <div style={{'line-height':'1.2rem'}} className='my-4'>
-          <p >運転を開始する前に startを押して下さい</p>
+    <div>
+      {username ?
+        <div className='my-3 text-center'>
+          <h2>Welcome to </h2>
+          <h2>Pixel Drive.</h2>
+          <div className='mt-3'>
+            <p>ストップウォッチ</p>
+          </div>
           
-          {hours === 0 && (
-            <p>安全運転で行きましょう！</p>
-          )}
-          {0 < hours && hours <= 1 && (
-            <p>いい調子です!!安全運転</p>
-          )}
-          {1 < hours && hours <= 2 && (
-            <p>安全運転えらい！</p>
-          )}
-          {2 < hours && hours <= 3 && (
-            <p>そろそろ休憩したら？</p>
-          )}
-          {3 < hours && hours <= 4 && (
-            <p>3時間！お疲れ様です</p>
-          )}
-          {4 < hours && hours <= 5 && (
-            <p>休憩も取って安全運転しよう！</p>
-          )}
-          {5 < hours && hours <= 6 && (
-            <p>5時間を超えたよ！休憩は取った？</p>
-          )}
-        </div>
+          <div style={{ fontSize: 50 }}>
+          
+            {hours < 10 && (0)}<span>{hours}</span>:
+            {minutes < 10 && (0)}<span>{minutes}</span>:
+            {seconds < 10 && (0)}<span>{seconds}</span>
+          </div>
 
+          <p>{isRunning ? "Running" : "Not running"}</p>
+          <button className='mx-1 btn btn-secondary' onClick={startDrive}>Start</button>
+          <button className='mx-1 btn btn-secondary' onClick={pause}>Pause</button>
+          <button className='mx-1 btn btn-secondary' onClick={reset}>Reset</button>
+          
+          <div style={{'line-height':'1.2rem'}} className='my-4'>
+            <p >運転を開始する前に startを押して下さい</p>
+            
+            {hours === 0 && (
+              <p>安全運転で行きましょう！</p>
+            )}
+            {0 < hours && hours <= 1 && (
+              <p>いい調子です!!安全運転</p>
+            )}
+            {1 < hours && hours <= 2 && (
+              <p>安全運転えらい！</p>
+            )}
+            {2 < hours && hours <= 3 && (
+              <p>そろそろ休憩したら？</p>
+            )}
+            {3 < hours && hours <= 4 && (
+              <p>3時間！お疲れ様です</p>
+            )}
+            {4 < hours && hours <= 5 && (
+              <p>休憩も取って安全運転しよう！</p>
+            )}
+            {5 < hours && hours <= 6 && (
+              <p>5時間を超えたよ！休憩は取った？</p>
+            )}
+          </div>
+          
+          
+          
+          <div>
+            {!isRunning && (
+              <Link to="/result">現在のドット絵を見る</Link>
+            )}
+          
+          </div>
 
-
-        <div>
-          {!isRunning && (
-            <Link to="/result">現在のドット絵を見る</Link>
-          )}
-
-        </div>
-      </div>
-
-      <div className='text-center my-5'>
-        <button type='button' className='btn btn-primary' onClick={calcDistance}>運転記録を反映する！</button>
-      </div>
-
-    </>
-
-
+          
+          
+          <div className='text-center my-5'>
+          <button type='button' className='btn btn-primary' onClick={calcDistance}>運転記録を反映する！</button>
+          </div>
+     </div> : <>loginに失敗しました</>
+    }
+    </div>
+    
   );
 
 };
 
 export default Home;
+
+
+
+
+

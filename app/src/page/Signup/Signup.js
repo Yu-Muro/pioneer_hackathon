@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+// import { useHistory } from 'react-router-dom';
 
 const API_URL = 'https://pixel-drive.herokuapp.com'
 
@@ -10,23 +11,33 @@ const API_URL = 'https://pixel-drive.herokuapp.com'
 const Signup = () => {
   const [name,setName] = useState('');
   const [password,setPassword] = useState('');
-
-
+  
   const createUser = async(e)=>{
     e.preventDefault();
     const formData = new FormData();
     formData.append("username", name);
     formData.append("password", password);
+    formData.append("confirmation", password);
 
-    await axios.post(`${API_URL}/register`, formData)
+    // const history = useHistory();
+
+    // ,{withCredentials: true}
+    await axios.post(`${API_URL}/register`, formData,{withCredentials: false})
     .then(function (response) {
       // 送信成功時の処理
       console.log(response);
+      localStorage.setItem('username', name);
+      localStorage.setItem('password',password);
+      // history.push("/home")
+      
     })
     .catch(function (error) {
       // 送信失敗時の処理
       console.log(error);
-  });
+    });
+    setName('')
+    setPassword('')
+
   }
 
   return (
