@@ -55,7 +55,7 @@ def get_user(user_id):
 
 def update_user(user_id, mileage):
     user = session.query(User).filter(User.user_id == user_id).first()
-    user.mileage += mileage
+    user.mileage += int(mileage)
     session.commit()
     session.close()
 
