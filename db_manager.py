@@ -55,7 +55,7 @@ def get_user(user_id):
 
 def update_user(user_id, mileage):
     user = session.query(User).filter(User.user_id == user_id).first()
-    user.mileage = mileage
+    user.mileage += mileage
     session.commit()
     session.close()
 
@@ -64,6 +64,11 @@ def delete_user(user_id):
     session.delete(user)
     session.commit()
     session.close()
+
+def get_pic(user_id):
+    result = session.query(User.picture_id, User.mileage).filter(User.user_id == user_id).all()
+    session.close()
+    return result
 
 if __name__ == "__main__":
     print("session closed")
