@@ -3,7 +3,7 @@ import React from 'react';
 const Header = () => {
   return (
     <>
-      <nav className="navbar navbar-light bg-primary">
+      <nav className="navbar navbar-dark bg-primary">
         <a href="/" className="navbar-brand">Pixel Drive</a>
         <button className="navbar-toggler" type="button"
           data-toggle="collapse"
@@ -15,9 +15,7 @@ const Header = () => {
         </button>
         <div className="collapse navbar-collapse" id="navmenu1">
           <div className="navbar-nav">
-            <a className="nav-item nav-link" href="#">Menu#1</a>
-            <a className="nav-item nav-link" href="#">Menu#2</a>
-            <a className="nav-item nav-link" href="#">Menu#3</a>
+            <a className="nav-item nav-link" href="#">Contact</a>
           </div>
         </div>
       </nav>
