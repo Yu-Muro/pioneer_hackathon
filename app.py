@@ -2,6 +2,7 @@ import flask
 from flask import Flask, request, jsonify, abort
 import db_manager
 import os
+import img
 
 
 SECRET_KEY = "hogefuga"
@@ -109,6 +110,18 @@ def login():
                 "message": "Account successfully login"}), 200
     # else:
     #     return flask.render_template("login.html")
+
+@app.route("\rev", methods=["POST"])
+def rev():
+    username = flask.request.form.get('username')
+    mileage = flask.request.form.get('mileage')
+    db_manager.update_user(username, mileage)
+    r = db_manager.get_pic(username)
+    pic_id, mileage = r[0][0], r[0][1]
+    img_data = str(img.make_img(pic_id, mileage))
+    return jsonify({
+        "message": "Account successfully login",
+        "img": img_data}), 200
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
