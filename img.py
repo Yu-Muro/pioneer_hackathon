@@ -16,18 +16,17 @@ def scale_to_width(img, width):
 
     return dst
 
-img = cv2.imread('hoge.jpg')
-# img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-# plt.imshow(cv2.cvtColor(img_hsv, cv2.COLOR_HSV2RGB))
 
-width = 100
-
-dst = scale_to_width(img, width)
 # img_hsv = cv2.cvtColor(dst, cv2.COLOR_BGR2HSV)
 # plt.imshow(cv2.cvtColor(img_hsv, cv2.COLOR_HSV2RGB))
 
 
 def make_img(picture_id, mileage):
+    img = cv2.imread('hoge.jpg')
+    # img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    # plt.imshow(cv2.cvtColor(img_hsv, cv2.COLOR_HSV2RGB))
+    width = 100
+    dst = scale_to_width(img, width)
     random.seed(picture_id)
     p = [k for k in range(len(dst)*len(dst[0]))]
     random.shuffle(p)
